@@ -3,13 +3,13 @@ $(function() {
     var formMessages = $('#form-messages');
 
     $(form).submit(function(e) {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault(); 
         
         var formData = $(form).serialize();
 
         $.ajax({
             type: 'POST',
-            url: $(form).attr('action'), // Use the form's action attribute
+            url: $(form).attr('action'),
             data: formData
         })
         .done(function(response) {
