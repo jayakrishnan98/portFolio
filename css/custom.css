@@ -1,6 +1,7 @@
 .timeline {
     position: relative;
-    width: 660px;
+  width: 100%;
+  max-width: 760px;
     margin: 0 auto;
     margin-top: 20px;
     padding: 1em 0;
@@ -41,15 +42,16 @@
   
   .direction-l {
     position: relative;
-    width: 18.5312rem;
+    width: calc(50% - 42px);
     float: left;
     text-align: right;
   }
   
   .direction-r {
     position: relative;
-    width: 300px;
+    width: calc(50% - 42px);
     float: right;
+    text-align: left;
   }
 
   .margin-30{
@@ -62,15 +64,10 @@
     text-align: center;
   }
 
-  .wid-marian{
-    position: relative;
-    float: right;
-    width: 20.65rem;
-  }
-  .wid-freelance{
-    position: relative;
-    float: right;
-    width: 21.2rem;
+  .wid-marian,
+  .wid-freelance,
+  .wid-ey{
+    width: calc(50% - 42px);
   }
   
   .flag {
@@ -181,7 +178,7 @@
   
   /* ================ Timeline Media Queries ================ */
   
-  @media screen and (max-width: 660px) {
+  @media screen and (max-width: 991px) {
   
   .timeline {
        width: 100%;
@@ -213,7 +210,7 @@
   .direction-r .flag:before {
     position: absolute;
     top: -30px;
-      left: 52.2%;
+      left: 50%;
       content: ' ';
       display: block;
       width: 12px;
@@ -275,6 +272,13 @@
       
     z-index: 15;
   }
+
+    .wid-marian,
+    .wid-freelance,
+    .wid-ey {
+      float: none;
+      width: 100%;
+    }
   
   }
   
