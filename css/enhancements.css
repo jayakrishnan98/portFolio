@@ -731,14 +731,14 @@ a#logo:hover {
 /* ── Timeline ── */
 .timeline:before {
   background: linear-gradient(to bottom,
-    rgba(99,102,241,0) 0%,
-    var(--accent) 5%,
-    var(--accent-2) 50%,
-    var(--accent-3) 95%,
-    rgba(34,211,238,0) 100%) !important;
+    rgba(15, 10, 46, 0) 0%,
+    rgba(30, 25, 55, 0.85) 5%,
+    rgba(40, 35, 65, 0.9) 50%,
+    rgba(30, 25, 55, 0.85) 95%,
+    rgba(15, 10, 46, 0) 100%) !important;
   width: 2px !important;
   margin-left: -1px !important;
-  box-shadow: 0 0 20px var(--accent-glow);
+  box-shadow: none;
 }
 
 .direction-l .flag:before,
@@ -809,6 +809,59 @@ a#logo:hover {
 
 .desc ul li::marker {
   color: var(--accent-light);
+}
+
+/* Mobile timeline: keep vertical line behind content */
+@media screen and (max-width: 991px) {
+  .timeline:before {
+    z-index: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .timeline li {
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline .direction-l,
+  .timeline .direction-r {
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline .flag-wrapper,
+  .timeline .flag,
+  .timeline .time-wrapper,
+  .timeline .desc {
+    position: relative;
+    z-index: 2;
+  }
+
+  .timeline .desc {
+    background: rgba(8, 6, 24, 0.94) !important;
+  }
+
+  .timeline .flag {
+    background: rgba(8, 6, 24, 0.94) !important;
+  }
+
+  .section.slide-is-active .timeline li.anim-on-slide,
+  .section.slide-is-active .timeline li.anim-from-left,
+  .section.slide-is-active .timeline li.anim-from-right {
+    animation-name: timeline-rise !important;
+    transform: none;
+  }
+
+  @keyframes timeline-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 /* ── Certifications ── */
