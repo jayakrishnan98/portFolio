@@ -155,7 +155,7 @@
         if ($('.fullpage-default').length) {
             var myFullpage = new fullpage('.fullpage-default', {
                 licenseKey: ' C7F41B00-5E824594-9A5EFB99-B556A3D5',
-                anchors: ['slide01', 'slide02', 'slide03', 'slide04', 'slide05', 'slide06', 'slide07','slide08'],
+                anchors: ['slide01', 'slide02', 'slide03', 'slide04', 'slide05', 'slide06', 'slide07', 'slide08', 'slide09'],
                 menu: '#nav',
                 lazyLoad: true,
                 navigation: true,
@@ -163,7 +163,25 @@
                 scrollOverflow: true,
                 responsiveWidth: 768,
                 responsiveHeight: 600,
-                responsiveSlides: true
+                responsiveSlides: true,
+                scrollingSpeed: 900,
+                afterLoad: function(origin, destination) {
+                    var header = document.getElementById('header');
+                    if (header && destination && destination.index > 0) {
+                        header.classList.add('header-scrolled');
+                    } else if (header) {
+                        header.classList.remove('header-scrolled');
+                    }
+                    if (window.PortfolioMotion && destination && destination.item) {
+                        window.PortfolioMotion.activateSlide(destination.item);
+                    }
+                },
+                afterRender: function() {
+                    var first = document.querySelector('.fullpage-default .section');
+                    if (window.PortfolioMotion && first) {
+                        window.PortfolioMotion.activateSlide(first);
+                    }
+                }
             });
         }
         $(document).on('click', '.navbar-toggle', function() {

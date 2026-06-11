@@ -166,9 +166,8 @@
   
   .desc {
     margin: 1em 0.75em 0 0;
-    
     font-size: 0.77777em;
-    font-style: italic;
+    font-style: normal;
     line-height: 1.5em;
   }
   
