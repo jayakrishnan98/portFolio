@@ -216,5 +216,47 @@
         }).on('click', '.side-menu .navbar-nav li a', function() {
             $('body').removeClass('sidemenu-open');
         });
+
+        (function updateLeetCodeCount() {
+            var $count = $('#leetcode-count');
+            var $stat = $('#leetcode-stat');
+            var $divider = $('#leetcode-divider');
+            if (!$count.length || !$stat.length) return;
+
+            var username = 'jayakrishnanvr98';
+            var endpoints = [
+                'https://leetcode-api-faisalshohag.vercel.app/' + username,
+                'https://alfa-leetcode-api.onrender.com/' + username + '/solved'
+            ];
+
+            function showCount(n) {
+                if (typeof n !== 'number' || n <= 0) return;
+                $count.text(n);
+                $stat.removeAttr('hidden');
+                $divider.removeAttr('hidden');
+            }
+
+            function fetchFrom(index) {
+                if (index >= endpoints.length) return;
+                fetch(endpoints[index])
+                    .then(function(res) {
+                        if (!res.ok) throw new Error('bad status');
+                        return res.json();
+                    })
+                    .then(function(data) {
+                        var n = data.totalSolved || data.solvedProblem;
+                        if (typeof n === 'number' && n > 0) {
+                            showCount(n);
+                        } else {
+                            fetchFrom(index + 1);
+                        }
+                    })
+                    .catch(function() {
+                        fetchFrom(index + 1);
+                    });
+            }
+
+            fetchFrom(0);
+        })();
     });
 })(jQuery, window, document);

@@ -344,6 +344,20 @@ a#logo:hover {
   padding: 0 20px;
 }
 
+a.hero-stat-link {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease;
+}
+
+a.hero-stat-link:hover {
+  transform: translateY(-2px);
+}
+
+a.hero-stat-link:hover .stat-label {
+  color: var(--accent-light);
+}
+
 .hero-stat .stat-num {
   font-family: var(--font-body);
   font-size: 28px;
@@ -362,6 +376,7 @@ a#logo:hover {
   text-transform: uppercase;
   color: var(--text-muted);
   margin-top: 4px;
+  transition: color 0.25s ease;
 }
 
 .hero-stat-divider {
@@ -1142,15 +1157,19 @@ a#logo:hover {
   }
 
   .hero-stats {
-    padding: 14px 20px;
+    padding: 14px 12px;
   }
 
   .hero-stat {
-    padding: 0 14px;
+    padding: 0 10px;
   }
 
   .hero-stat .stat-num {
-    font-size: 22px;
+    font-size: 20px;
+  }
+
+  .hero-stat .stat-label {
+    font-size: 10px;
   }
 
   .hero-actions {
