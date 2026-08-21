@@ -397,65 +397,6 @@ a.hero-stat-link:hover .stat-label {
   background: linear-gradient(to bottom, transparent, var(--border-bright), transparent);
 }
 
-/* Hero portrait frame + 3D tilt */
-.hero-image-frame {
-  position: relative;
-  display: inline-block;
-  transition: transform 0.15s ease-out;
-  transform-style: preserve-3d;
-}
-
-.hero-portrait {
-  transform: translateZ(30px);
-}
-
-.hero-image-glow {
-  position: absolute;
-  inset: -20px;
-  border-radius: 24px;
-  background: conic-gradient(
-    from 0deg,
-    var(--accent),
-    var(--accent-2),
-    var(--accent-3),
-    var(--accent),
-    var(--accent-2)
-  );
-  animation: rotate-glow 5s linear infinite;
-  opacity: 0.6;
-  filter: blur(20px);
-}
-
-@keyframes rotate-glow {
-  to { transform: rotate(360deg); }
-}
-
-.hero-portrait {
-  position: relative;
-  z-index: 2;
-}
-
-.hero-portrait::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 14px;
-  background: conic-gradient(
-    from 0deg,
-    var(--accent),
-    var(--accent-2),
-    var(--accent-3),
-    var(--accent)
-  );
-  animation: rotate-border 4s linear infinite;
-  z-index: -1;
-}
-
-@keyframes rotate-border {
-  to { transform: rotate(360deg); }
-}
-
-.hero-portrait img,
 .about-img img {
   border: 2px solid rgba(255, 255, 255, 0.12) !important;
   box-shadow:
@@ -463,10 +404,6 @@ a.hero-stat-link:hover .stat-label {
     0 0 0 1px rgba(255, 255, 255, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.hero-portrait:hover img {
-  transform: scale(1.02) translateY(-4px);
 }
 
 /* Buttons */
@@ -1133,8 +1070,6 @@ a.hero-stat-link:hover .stat-label {
   }
 
   .orb,
-  .hero-image-glow,
-  .hero-portrait::before,
   .next-section img {
     animation: none !important;
   }

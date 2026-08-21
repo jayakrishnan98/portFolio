@@ -316,24 +316,6 @@
         draw();
     }
 
-    /* ── Hero 3D tilt ── */
-    function initHeroTilt() {
-        if (prefersReducedMotion || isMobile) return;
-        var frame = document.querySelector('.hero-image-frame');
-        if (!frame) return;
-
-        frame.addEventListener('mousemove', function (e) {
-            var rect = frame.getBoundingClientRect();
-            var x = (e.clientX - rect.left) / rect.width - 0.5;
-            var y = (e.clientY - rect.top) / rect.height - 0.5;
-            frame.style.transform = 'perspective(900px) rotateY(' + (x * 14) + 'deg) rotateX(' + (-y * 14) + 'deg)';
-        });
-
-        frame.addEventListener('mouseleave', function () {
-            frame.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg)';
-        });
-    }
-
     /* ── Scroll reveal for cards ── */
     function initReveal() {
         if (prefersReducedMotion) return;
@@ -413,11 +395,6 @@
                 el.style.setProperty('--anim-delay', (i * 0.09) + 's');
             });
 
-            section.querySelectorAll('.hero-image-frame').forEach(function (el) {
-                el.classList.add('anim-on-slide', 'anim-scale');
-                el.style.setProperty('--anim-delay', '0.3s');
-            });
-
             section.querySelectorAll('.timeline li').forEach(function (li, i) {
                 li.classList.add('anim-on-slide', i % 2 === 0 ? 'anim-from-left' : 'anim-from-right');
                 li.style.setProperty('--anim-delay', (i * 0.1) + 's');
@@ -482,7 +459,6 @@
     document.addEventListener('DOMContentLoaded', function () {
         initWebGLMesh();
         initDepthParticles();
-        initHeroTilt();
         initReveal();
         initSkillStagger();
         initOrbParallax();

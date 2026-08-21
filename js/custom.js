@@ -225,6 +225,7 @@
 
             var username = 'jayakrishnanvr98';
             var endpoints = [
+                'https://leetcode-stats.tashif.codes/' + username,
                 'https://leetcode-api-faisalshohag.vercel.app/' + username,
                 'https://alfa-leetcode-api.onrender.com/' + username + '/solved'
             ];
